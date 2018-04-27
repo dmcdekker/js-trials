@@ -41,7 +41,7 @@ showPhoneNumbers(phoneNumbers);
 console.log('\n')
 
 // Add function to print account information 
-function printAccountInfo( name, number, business) {
+function printAccountInfo(name, number, business) {
 	console.log(`Account Holder Name: ${name}`);
 	console.log(`Account Holder Number: ${number}`);
 	console.log(`Business Name: ${business}`);
@@ -96,9 +96,9 @@ function showBalanceStatus(balance){
 	if (balance < 0) {
 		console.log("You are overdrawn");
 	}else if (balance > 0 && balance < 20){
-		console.log("Warning, you are close to zero balance")
+		console.log("Warning, you are close to zero balance");
 	}else{
-		console.log("Thanks for your business.")
+		console.log("Thanks for your business.");
 	}
 }
 // Add function to show transactions
@@ -120,6 +120,7 @@ function showTransactions(map, balance){
 }
 
 showTransactions(transactions, 26000)
+console.log('\n');
 
 // Function to get fees
 function getFees(bal) {
@@ -135,19 +136,50 @@ function getFees(bal) {
 // All Customer Info:
 
 // Make an object with customer info
+let customer = {accountName : accountHolder, 
+				acctNum : accountNumber,
+				bizname : businessName, 
+				addresses : addresses,
+				phoneNumbers : phoneNumbers,
+				transactions : transactions,
+				startBal : 26000};
 
+//console.log(customer);				
 
 // Function to add customer attributes
-
+function addToCustomer(melon='Cantaloupe', pets=0){
+	customer.melon = melon;
+	customer.pets = pets;
+}
 
 // Add attributes for this user
+addToCustomer('casaba', 1);
+//console.log(customer);
 
 
 // ///////////////////////////////////////////////////////
 // Getting a Business Loan
-
+function LoanCalculator(income, melon, pets){
+	if (income < 1000000){
+		if (melon == 'casaba' || pets > 5){
+			return '5 percent';
+		}else{
+			return '8 percent';
+		}
+	}else if (income > 1000000 && income < 200000){
+		if (melon == 'casaba' || pets > 5){
+			return '4 percent';
+		}else{
+			return '7 percent';
+		}
+	}
+	return '4 percent';
+}
 
 // Function to return loan rate
+LoanCalculator(90000, 'red seedless', 5);
+LoanCalculator(100000, 'casaba', 6);
+LoanCalculator(100000, 'casaba', 2);
 
 
 // ///////////////////////////////////////////////////////
